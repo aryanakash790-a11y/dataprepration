@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Cleaner</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .preview {
+            white-space: pre-wrap;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: scroll;
+            background: #f9f9f9;
+        }
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Upload Document for Cleaning</h2>
+
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input name="file" type="file" required>
+    <br>
+    <button type="submit">Upload & Process</button>
+</form>
+
+{% if preview %}
+    <h3>Preview (First 2000 characters)</h3>
+    <div class="preview">
+        {{ preview }}
+    </div>
+
+    <br>
+    <a href="{{ download_link }}">
+        <button>Download Full Cleaned File</button>
+    </a>
+{% endif %}
+
+</body>
+</html>
